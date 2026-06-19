@@ -1,1 +1,13 @@
+19/06/26
 
+basic commands
+
+git --version
+git config --global user.name "sanjay" 
+git config --global user.email "sanjaygovind464@gmail.com"
+git init
+git config --local user.name "rahul"
+git config --local user.email "rahul@123.com"
+git --help
+git status
+touch README.md
