@@ -1,4 +1,4 @@
-19/06/26
+
 
 basic commands
 
@@ -11,3 +11,36 @@ git config --local user.email "rahul@123.com"
 git --help
 git status
 touch README.md
+git commit -m "my first file commit"
+git commit -m "docs: my first file commit"
+git status
+git log
+git branch newbranch
+git log
+git branch
+git switch newbranch
+git switch -
+git branch -m newbranch feature-login
+git branch -m main
+git switch -c feature-api
+git branch
+git switch feature-login
+git branch -d feature-login
+git switch feature-api
+git branch -d feature-login
+git branch
+git branch -r
+git branch -a
+git branch -v
+git branch -vv
+git log
+git log --graph --online --all
+git log --graph --oneline --all
+git branch
+git add .
+git status
+git commit -m "docs: new-documentation"
+git status
+git log
+git clone https://github.com/Sanjay-Code241/Blame-project.git
+git log --graph --oneline --all
