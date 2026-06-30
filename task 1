@@ -1,0 +1,343 @@
+Module 1: Basic Git Lifecycles & File Tracking (25 Marks)
+
+Task 1: Creating a New Git Repository
+Write the basic terminal command used to initialize a brand-new, empty Git repository inside your
+current working directory.
+
+Soln:
+
+git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: will change to "main" in Git 3.0. To configure the initial branch name
+hint: to use in all of your new repositories, which will suppress this warning,
+hint: call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+hint:
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /home/sanjay/new_proj/.git/
+
+Task 2: Checking File Status
+What command do you run to check which files are modified, untracked, or successfully staged in
+your current project workspace?
+
+[sanjay@alma new_proj]$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+[sanjay@alma new_proj]$ echo "My first project on version control" > info.txt
+[sanjay@alma new_proj]$ ls -ltra
+total 8
+drwx------. 9 sanjay sanjay 4096 Jun 30 15:33 ..
+drwxr-xr-x. 6 sanjay sanjay  103 Jun 30 15:37 .git
+-rw-r--r--. 1 sanjay sanjay   36 Jun 30 15:39 info.txt
+drwxr-xr-x. 3 sanjay sanjay   34 Jun 30 15:39 .
+[sanjay@alma new_proj]$ cat info.txt
+My first project on version control
+[sanjay@alma new_proj]$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        info.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Task 3: Staging a Specific File
+Provide the exact command required to stage a single, specific file named index.html to prepare
+it for your next commit.
+
+[sanjay@alma new_proj]$ nano index.html
+[sanjay@alma new_proj]$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+[sanjay@alma new_proj]$ git add index.html
+
+Task 4: Staging All Workspace Changes
+Write the command that adds and stages every single new, changed, or deleted file across your
+entire project directory structure at once.
+
+[sanjay@alma new_proj]$ echo "New changes in files to be added" > file.txt
+[sanjay@alma new_proj]$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file.txt
+
+[sanjay@alma new_proj]$ git add .
+
+Task 5: Saving Staged Changes with a Commit
+Write the command used to save your staged changes into the local repository history, including an
+explicit commit message.
+
+[sanjay@alma new_proj]$ git commit -m "docs:updated two files for commit"
+[master f93ec71] docs:updated two files for commit
+ 2 files changed, 110 insertions(+)
+ create mode 100644 file.txt
+ create mode 100644 index.html
+
+Module 2: Reviewing History & Project Changes (20 Marks)
+Task 6: Viewing Commit History Logs
+What basic terminal command allows you to view the chronological list of past commits made on your current active branch?
+
+[sanjay@alma new_proj]$ git log
+commit f93ec716c15ec0545629ab39d3d80ea2bf4ae213 (HEAD -> master)
+Author: David <Davidl34@yahoo.com>
+Date:   Tue Jun 30 16:02:13 2026 +0530
+
+    docs:updated two files for commit
+
+commit 71981ed177a42c19509d9f1f5061315a42405d46
+Author: David <Davidl34@yahoo.com>
+Date:   Tue Jun 30 15:45:29 2026 +0530
+
+    changes:updated information file
+
+Task 7: Simplifying Log Layouts
+Which option modifier can you add to the log command to condense the output so that every
+commit takes up exactly one line?
+
+[sanjay@alma new_proj]$ git log --graph --oneline --all
+* f93ec71 (HEAD -> master) docs:updated two files for commit
+* 71981ed changes:updated information file
+
+Task 8: Checking Unstaged Code Modifications
+Write the command used to show the line-by-line differences between the changes currently in your
+working directory and your last saved commit snapshot.
+
+[sanjay@alma new_proj]$ git diff
+
+
+Task 9: Configuring User Identity Configuration
+Write the two distinct configuration commands required to set up your global Git username and
+global user email on a new system.
+
+[sanjay@alma new_proj]$ git config --global user.name "Sanjay"
+[sanjay@alma new_proj]$ git config --global user.email "Sanjaygovind43@gmail.com"
+
+Module 3: Working with Branches and Repository Navigation
+(20 Marks)
+Task 10: Downloading an Existing Project Copy
+What command do you use to download and copy a complete remote repository from a cloud URL
+onto your local machine?
+[sanjay@alma new_proj]$ git clone https://github.com/Sanjay723/AWS-EC2-Reverse-Proxy-Setup-using-Nginx.git
+Cloning into 'AWS-EC2-Reverse-Proxy-Setup-using-Nginx'...
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (21/21), done.
+remote: Total 23 (delta 2), reused 19 (delta 1), pack-reused 0 (from 0)
+Receiving objects: 100% (23/23), 21.66 KiB | 652.00 KiB/s, done.
+Resolving deltas: 100% (2/2), done.
+
+Task 11: Creating a New Branch
+Write the command used to create a completely new, independent development branch named
+feature-login.
+[sanjay@alma new_proj]$ git branch feature-login
+
+Task 12: Switching to a Branch
+Provide the command required to change your active working context and switch over to an existing
+branch named feature-login.
+[sanjay@alma new_proj]$ git switch feature-login
+Switched to branch 'feature-login'
+
+Task 13: Creating and Switching Branches Simultaneously
+What shortcut command syntax creates a brand-new branch and immediately switches you onto it
+in a single step?
+[sanjay@alma new_proj]$ git switch -
+Switched to branch 'master'
+
+Task 14: Listing Available Local Branches
+Which command do you run to list all the local branches that currently exist in your repository?
+[sanjay@alma new_proj]$ git branch -a
+  feature-login
+* master
+
+Task 15: Merging Code Branches
+Assuming you are currently working on your main production branch, write the command used to
+merge the changes from your completed feature-login branch into it.
+[sanjay@alma new_proj]$ git merge feature-login
+Merge made by the 'ort' strategy.
+ file1.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 file1.txt
+
+Task 16: Identifying Merged Branches
+What command shows you a list of all branches whose work has already been cleanly and successfully
+merged into your active branch?
+[sanjay@alma new_proj]$ git log
+commit 192bb142d28d419e83893571270a25907f18626f (HEAD -> feature-api)
+Merge: 4b9b127 4f3c712
+Author: Sanjay <Sanjaygovind43@gmail.com>
+Date:   Tue Jun 30 16:49:07 2026 +0530
+
+    Merge branch 'feature-login' into feature-api
+
+commit 4b9b1275f135e1aad93f915d5d5017e90afdc229
+Author: Sanjay <Sanjaygovind43@gmail.com>
+Date:   Tue Jun 30 16:48:44 2026 +0530
+
+    test2:checks
+
+Task 17: Finalizing a Merge After Resolving Conflicts
+Explain what consecutive actions a developer must take in the terminal right after manually fixing
+a merge conflict inside a file to finish the merge process.
+[sanjay@alma new_proj]$ echo "The first line of API features" > conflict_test.txt
+[sanjay@alma new_proj]$ git add conflict_test.txt
+[sanjay@alma new_proj]$ git commit -m "test4:checks"
+[feature-api 3cf8da0] test4:checks
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflict_test.txt
+[sanjay@alma new_proj]$ git switch feature-login
+Switched to branch 'feature-login'
+[sanjay@alma new_proj]$ echo "The first line of new functionalities of  user login" > conflict_test.txt 
+[sanjay@alma new_proj]$ git add .
+[sanjay@alma new_proj]$ git commit -m "test5:checks"
+[feature-login 2644183] test5:checks
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflict_test.txt
+[sanjay@alma new_proj]$ git switch feature-api
+Switched to branch 'feature-api'
+[sanjay@alma new_proj]$ git merge feature-login
+Auto-merging conflict_test.txt
+CONFLICT (add/add): Merge conflict in conflict_test.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+step 1 : edit the conflicted file in nano text editor and remove head === and feature-login conflict_test.txt
+The first line of API features
+The first line of new functionalities of  user login
+
+step 2: stage the changes
+[sanjay@alma new_proj]$ git add .
+
+step 3: continue the merge
+[sanjay@alma new_proj]$ git merge --continue
+Merge branch 'feature-login' into feature-api
+
+# Conflicts:
+#       conflict_test.txt
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please run
+#       git update-ref -d MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch feature-api
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#       modified:   conflict_test.txt
+#
+[feature-api 595f5ab] Merge branch 'feature-login' into feature-api
+
+
+Task 18: Canceling a Conflicting Merge
+If a merge results in messy conflicts and you want to completely cancel the operation and return
+your files to their exact state before the merge started, what command should you run?
+[sanjay@alma new_proj]$ git merge --abort
+
+Task 19: Filtering Logs for Merge Commits Only
+Write the log command option that filters your history display so that you only see commits where
+branches were merged together.
+
+[sanjay@alma new_proj]$ git log --merges
+commit 595f5ab098e7ac4a3569422aa7ce6ee658f29ce8 (HEAD -> feature-api)
+Merge: 3cf8da0 2644183
+Author: Sanjay <Sanjaygovind43@gmail.com>
+Date:   Tue Jun 30 17:28:51 2026 +0530
+
+    Merge branch 'feature-login' into feature-api
+
+commit 192bb142d28d419e83893571270a25907f18626f
+Merge: 4b9b127 4f3c712
+Author: Sanjay <Sanjaygovind43@gmail.com>
+Date:   Tue Jun 30 16:49:07 2026 +0530
+
+    Merge branch 'feature-login' into feature-api
+
+Task 20: Fetching Remote Metadata
+What command updates your local repository tracking data with changes from a remote server
+without actually modifying or merging any files in your local workspace?
+
+[sanjay@alma new_proj]$ git fetch
+
+Task 21: Realizing the Stable Flow Engineering Pipeline Blueprint
+Design and write a sequential list of bash terminal commands that accomplishes the beginner project
+scenario outlined below:
+• Create a new folder named /workspace/core-api, navigate inside it, and initialize a fresh
+Git repository.
+[sanjay@alma ~]$ mkdir -p ~/workspace/core-api
+[sanjay@alma ~]$ cd ~/workspace/core-api/
+[sanjay@alma core-api]$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: will change to "main" in Git 3.0. To configure the initial branch name
+hint: to use in all of your new repositories, which will suppress this warning,
+hint: call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+hint:
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /home/sanjay/workspace/core-api/.git/
+• Create a file named server.js, add some basic text to it, stage the file, and make an initial
+commit.
+[sanjay@alma core-api]$ cat >> server.js
+initial setup server
+ready for deployment
+starting the app
+^C
+[sanjay@alma core-api]$ git add server.js
+[sanjay@alma core-api]$ git commit -m "chore:checking app server"
+
+• Create and switch to a new branch named hotfix-cors. Edit the text inside server.js,
+stage your change, and commit it to save the fix.
+[sanjay@alma core-api]$ git branch hotfix-cors
+[sanjay@alma core-api]$ git switch hotfix-cors
+Switched to branch 'hotfix-cors'
+[sanjay@alma core-api]$ ls -ltra
+total 4
+drwxr-xr-x. 3 sanjay sanjay  22 Jun 30 17:50 ..
+drwxr-xr-x. 3 sanjay sanjay  35 Jun 30 17:55 .
+-rw-r--r--. 1 sanjay sanjay  59 Jun 30 17:55 server.js
+drwxr-xr-x. 7 sanjay sanjay 150 Jun 30 18:00 .git
+[sanjay@alma core-api]$ cat >> server.js
+Setup done server ready for deployment
+Application started successfully
+^C
+[sanjay@alma core-api]$ git add server.js
+[sanjay@alma core-api]$ git commit -m "chore:servers checks completed"
+[hotfix-cors eeae37e] chore:servers checks completed
+ 1 file changed, 2 insertions(+)
+• Switch back to your primary production master/main branch, and run a clean merge to pull
+the hotfix work into your main history line.
+[sanjay@alma core-api]$ git switch -
+Switched to branch 'master'
+[sanjay@alma core-api]$ git merge hotfix-cors
+Updating 09de88d..eeae37e
+Fast-forward
+ server.js | 2 ++
+ 1 file changed, 2 insertions(+)
