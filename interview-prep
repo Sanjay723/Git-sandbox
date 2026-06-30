@@ -1,0 +1,238 @@
+1. A developer accidentally commits secrets (AWS keys/passwords) to Git. What will you do?
+
+Answer:
+
+Immediately revoke or rotate the exposed credentials.
+Remove the secrets from the repository history using tools like git filter-repo or BFG Repo-Cleaner.
+Force-push the cleaned history (if appropriate).
+Inform the team because everyone will need to sync with the rewritten history.
+Prevent recurrence using .gitignore, pre-commit hooks, and secret-scanning tools.
+
+2. Your git push is rejected with:
+non-fast-forward
+
+What will you do?
+
+Answer:
+This means the remote branch has commits you don't have locally.
+
+Steps:
+
+git pull origin main
+
+Resolve any merge conflicts if they occur.
+
+Then:
+
+git push origin main
+
+If using a rebase workflow:
+
+git pull --rebase origin main
+git push origin main
+
+3. A merge conflict occurs while merging two branches. How do you resolve it?
+
+Answer:
+
+Check conflicting files:
+git status
+Open the files and resolve the conflict markers.
+Stage the resolved files:
+git add .
+Complete the merge:
+git commit
+
+4. You accidentally committed to the main branch instead of your feature branch. What will you do?
+
+Answer:
+
+Create a new branch:
+
+git branch feature-login
+
+Switch to it:
+
+git checkout feature-login
+
+Reset main:
+
+git checkout main
+git reset --hard HEAD~1
+
+Push the feature branch and create a pull request.
+
+5. A production deployment failed because of the latest commit. How do you roll back?
+
+Answer:
+Do not rewrite shared history. Instead:
+
+git revert <commit-id>
+
+This creates a new commit that reverses the changes.
+
+6. Your local branch is behind the remote branch. What should you do?
+
+Answer:
+
+git fetch
+git pull
+
+or
+
+git pull --rebase
+
+depending on the team's workflow.
+
+7. Another developer force-pushed to the shared branch. How will you recover?
+
+Answer:
+
+Use git reflog to find previous commits.
+Coordinate with the team before making changes.
+Avoid force-pushing to shared branches in the future.
+Protect important branches with branch protection rules.
+8. You have uncommitted changes but need to switch branches urgently.
+
+Answer:
+
+Use stash:
+
+git stash
+git checkout other-branch
+
+Restore later:
+
+git stash pop
+9. A teammate accidentally deleted an important branch. Can Git recover it?
+
+Answer:
+Yes.
+
+Find the commit:
+
+git reflog
+
+Create the branch again:
+
+git checkout -b recovered-branch <commit-id>
+10. The application works locally but Jenkins builds are failing after your Git changes.
+
+Answer:
+Check:
+
+Wrong branch in Jenkins
+Missing files committed?
+.gitignore excluding required files?
+Jenkins workspace cache
+Build logs
+Webhook configuration
+11. How would you recover a deleted commit?
+
+Answer:
+
+git reflog
+
+Locate the commit.
+
+Recover:
+
+git checkout -b recovery <commit-id>
+12. You need to apply one commit from another branch without merging everything.
+
+Answer:
+
+Use:
+
+git cherry-pick <commit-id>
+13. A developer committed a 2 GB file by mistake.
+
+What will you do?
+
+Answer:
+Remove it from history:
+
+git filter-repo
+
+or use:
+
+BFG Repo Cleaner
+
+Then force-push after team coordination.
+
+14. Why should developers avoid committing directly to the main branch?
+
+Answer:
+Because:
+
+Production stability
+Code reviews
+Pull requests
+CI/CD validation
+Easier rollback
+15. Explain a Git workflow you have used in a DevOps project.
+
+Sample Answer:
+
+Developer creates feature branch
+        ↓
+Writes code
+        ↓
+git add
+git commit
+        ↓
+git push
+        ↓
+Pull Request
+        ↓
+Code Review
+        ↓
+Jenkins CI Pipeline
+        ↓
+Tests Pass
+        ↓
+Merge into main
+        ↓
+Deployment
+16. How does Git integrate with Jenkins?
+
+Answer:
+
+Developer pushes code to Git.
+A webhook notifies Jenkins.
+Jenkins checks out the latest code.
+Jenkins builds the application.
+Runs automated tests.
+Creates artifacts or Docker images.
+Deploys to staging or production.
+17. Difference between git reset and git revert
+git reset	git revert
+Removes commits from history	Creates a new commit to undo changes
+Rewrites history	Preserves history
+Risky on shared branches	Safe for shared branches
+18. How do you check commit history?
+git log
+
+Compact format:
+
+git log --oneline
+
+Graph view:
+
+git log --graph --oneline --all
+19. What is the purpose of git fetch?
+
+Answer:
+It downloads changes from the remote repository without merging them into your current branch, allowing you to review updates before integrating them.
+
+20. How do you resolve conflicts in a Pull Request?
+
+Answer:
+
+Fetch the latest changes.
+Merge or rebase the target branch into your feature branch.
+Resolve conflicts locally.
+Test the application.
+Commit the resolution.
+Push the updated branch.
+Verify the Pull Request is conflict-free.
