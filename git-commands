@@ -46,3 +46,8 @@ git clone https://github.com/Sanjay-Code241/Blame-project.git
 git log --graph --oneline --all
 git merge feature-api
 git merge --continue
+git merge --abort
+git fetch
+git diff
+git push -u origin main
+git pull origin main
