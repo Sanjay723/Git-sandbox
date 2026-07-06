@@ -60,3 +60,4 @@ git clone git@github.com:Sanjay723/AWS-EC2-Reverse-Proxy-Setup-using-Nginx.git
 git push
 git rebase
 git rebase -i HEAD ~2
+git rebase --continue
