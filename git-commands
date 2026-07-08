@@ -62,3 +62,4 @@ git rebase
 git rebase -i HEAD ~2
 git rebase --continue
 git reflog
+git commit --amend
