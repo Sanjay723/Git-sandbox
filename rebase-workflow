@@ -1,0 +1,39 @@
+step1: recreate rebase workflow
+mkdir rbs-dir
+cd rbs-dir/
+       git init
+       git config --global user.name "sanjay"
+       git config --global user.email "sanjaygovind45@gmail.com"
+step2: first commit on main branch
+       echo "A sample devops file" > file1.txt
+       git status
+       git add file1.txt
+       git status
+       git commit -m "docs:new changes"
+step3: create feature-branch and commit
+       git branch
+       git branch -m master main
+       git branch
+       git status
+       git switch feature-branch
+       git switch -c feature-branch
+       git branch
+       echo "This is a second line of test devops file " >> file1.txt
+       git commit -am "docs:added new test changes"
+       git status
+       echo "New devops file" >> file1.txt
+       git commit -am "chore:new documentation"
+       git status
+step4: move main branch forward
+       git switch main
+       echo "a jenkins documentation" >> test_file.txt
+       git add .
+       git commit -m "docs:new features"
+step5: visualize history
+       git log --oneline --graph --all
+step6: rebase feature-branch onto main
+       git switch feature-branch
+       git branch
+       git rebase main
+step7: logs
+       git log --oneline --graph --all
