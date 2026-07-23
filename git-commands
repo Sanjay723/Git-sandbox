@@ -66,3 +66,7 @@ git commit --amend
 git config --list
 git config --global init.defaultBranch main
 git remote add origin https://github.com/Sanjay723/reponame.git
+git restore sample1.txt
+git revert 9e0c177
+git revert --abort
+git revert --skip
